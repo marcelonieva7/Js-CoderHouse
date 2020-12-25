@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        nombre = prompt('Ingrese su nombre');
+        console.log('Hola ' + nombre);
+        edad = prompt('Cual es tu edad ' + nombre);
+
+        if (edad < 18) {
+            alert('No podes ingresar');
+        }
+        else {
+            alert('Bienvenido');
+        
+            peli = 'Arrival';
+            intento = prompt('Adivina la pelicula');
+
+            if (intento == peli) {
+                alert('¡Correcto!');
+                puntos = 1;
+            }
+            else {
+                alert('Incorrecto');
+                puntos = 0;
+            }
+
+            añoEstreno = 2016;
+            intentoAño = prompt('¿En que año se estreno Arrival?');
+
+            if (añoEstreno == intentoAño) {
+                puntos = puntos + 1;
+                alert('Es correcto');
+            }
+            else {
+                alert('Incorrecto');
+            }
+
+            if (puntos == 1) {
+                alert('Tenes ' + puntos + ' punto');
+            }
+            else {
+                alert('Tenes ' + puntos + ' puntos');
+            }
+        }
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

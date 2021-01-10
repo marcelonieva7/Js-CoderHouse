@@ -24,3 +24,38 @@ let activo0 = new Activo('Bitcoin', 1, 21000, 40000)
 document.getElementById("act0e").textContent = activo0.especie;
 document.getElementById("act0p").textContent = activo0.porcentajeDeCartera();
 document.getElementById("act0v").textContent = activo0.variacion();
+
+
+var carteraCanvas = document.getElementById("donut-chart__chart");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var oilData = {
+    labels: [
+        "Criptomonedas",
+        "Acciones",
+        "Bonos",
+        "Otros"
+    ],
+    datasets: [
+        {
+            data: [21, 48, 9, 32],
+            backgroundColor: [
+                "#e64c65",
+                "#11a8ab",
+                "#fcb150",
+                "#4fc4f6"
+            ]
+        }]
+};
+
+var pieChart = new Chart(carteraCanvas, {
+  type: 'doughnut',
+  data: oilData,
+  options: {
+    legend: {
+        display: false
+    }
+  }
+});

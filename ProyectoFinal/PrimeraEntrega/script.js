@@ -26,12 +26,12 @@ document.getElementById("act0p").textContent = activo0.porcentajeDeCartera();
 document.getElementById("act0v").textContent = activo0.variacion();
 
 
-var carteraCanvas = document.getElementById("donut-chart__chart");
+let carteraCanvas = document.getElementById("donut-chart__chart");
 
 Chart.defaults.global.defaultFontFamily = "Lato";
 Chart.defaults.global.defaultFontSize = 18;
 
-var oilData = {
+let actData = {
     labels: [
         "Criptomonedas",
         "Acciones",
@@ -50,9 +50,9 @@ var oilData = {
         }]
 };
 
-var pieChart = new Chart(carteraCanvas, {
+let pieChart = new Chart(carteraCanvas, {
   type: 'doughnut',
-  data: oilData,
+  data: actData,
   options: {
     legend: {
         display: false

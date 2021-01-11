@@ -33,7 +33,7 @@ let actEspecies = ["Criptomonedas", "Acciones", "Bonos", "Otros"];
 let especiesColores = ["#e64c65", "#11a8ab", "#fcb150", "#4fc4f6"]
 let especieData = [21, 48, 9, 32];
 
-Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontFamily = "Ubuntu";
 Chart.defaults.global.defaultFontSize = 18;
 
 let actData = {

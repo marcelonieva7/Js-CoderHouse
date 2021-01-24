@@ -7,6 +7,11 @@ let montoEtfs= 0;
 
 let actLista = [];
 
+let criptoLista = [];
+let accionesLista = [];
+let bonosLista = [];
+let etfsLista = [];
+
 class Activo {
     constructor(especie, unidades, precioIngreso, precioActual) {
         this.especie = especie;
@@ -32,6 +37,7 @@ class Cripto extends Activo {
     constructor(especie, unidades, precioIngreso, precioActual) {
         super(especie, unidades, precioIngreso, precioActual)
         montoCripto += this.unidades * this.precioActual;
+        criptoLista.push(this);
     }
     static porcentajeDeEspecie() {
         let x = Math.round(montoCripto / montoCartera * 100) ;
@@ -42,6 +48,7 @@ class Acciones extends Activo {
     constructor(especie, unidades, precioIngreso, precioActual) {
         super(especie, unidades, precioIngreso, precioActual)
         montoAcciones += this.unidades * this.precioActual;
+        accionesLista.push(this);
     }
     static porcentajeDeEspecie() {
         let x = Math.round(montoAcciones / montoCartera * 100) ;
@@ -52,6 +59,7 @@ class Bonos extends Activo {
     constructor(especie, unidades, precioIngreso, precioActual) {
         super(especie, unidades, precioIngreso, precioActual)
         montoBonos += this.unidades * this.precioActual;
+        bonosLista.push(this);
     }
     static porcentajeDeEspecie() {
         let x = Math.round(montoBonos / montoCartera * 100) ;
@@ -62,6 +70,7 @@ class Etfs extends Activo {
     constructor(especie, unidades, precioIngreso, precioActual) {
         super(especie, unidades, precioIngreso, precioActual)
         montoEtfs += this.unidades * this.precioActual;
+        etfsLista.push(this);
     }
     static porcentajeDeEspecie() {
         let x = Math.round(montoEtfs / montoCartera * 100) ;
@@ -69,26 +78,36 @@ class Etfs extends Activo {
     }
 }
 
-//PONER LOS DATOS EN SUS CLASES//
-for (const i in datos) {
-    if (i == 'Cripto') {
-        for (const j of datos[i]) {
-           new Cripto(j.especie, j.unidades, j.precioIngreso, j.precioActual)
+///////LEER SI EXISTEN DATOS ALMACENADOS///////
+if (localStorage.cartera == undefined) {
+    leerDatos(datos);
+}
+else {    
+    leerDatos(JSON.parse(localStorage.cartera));
+}
+
+/////////PONER LOS DATOS EN SUS CLASES/////////
+function leerDatos(data){
+    for (const i in data) {
+        if (i == 'Cripto') {
+            for (const j of data[i]) {
+               new Cripto(j.especie, j.unidades, j.precioIngreso, j.precioActual)
+            }
         }
-    }
-    else if (i == 'Acciones') {
-        for (const j of datos[i]) {
-           new Acciones(j.especie, j.unidades, j.precioIngreso, j.precioActual)
+        else if (i == 'Acciones') {
+            for (const j of data[i]) {
+               new Acciones(j.especie, j.unidades, j.precioIngreso, j.precioActual)
+            }
         }
-    }
-    else if (i == 'Bonos') {
-        for (const j of datos[i]) {
-           new Bonos(j.especie, j.unidades, j.precioIngreso, j.precioActual)
+        else if (i == 'Bonos') {
+            for (const j of data[i]) {
+               new Bonos(j.especie, j.unidades, j.precioIngreso, j.precioActual)
+            }
         }
-    }
-    else if (i == 'ETFs') {
-        for (const j of datos[i]) {
-           new Etfs(j.especie, j.unidades, j.precioIngreso, j.precioActual)
+        else if (i == 'ETFs') {
+            for (const j of data[i]) {
+               new Etfs(j.especie, j.unidades, j.precioIngreso, j.precioActual)
+            }
         }
     }
 }
@@ -197,7 +216,17 @@ function Render() {
     }
     else if (seleccionado === 3) {
         nuevo = new Etfs(es, un, pn, pa); 
-    }    
+    }
+
+    let datosLocales = {
+        "Cripto": criptoLista,
+        "Acciones": accionesLista,
+        "Bonos": bonosLista,
+        "ETFs": etfsLista
+    }
+
+    localStorage.setItem('cartera', JSON.stringify(datosLocales));
+    
 
     let listaNueva = document.createElement("tbody");
     listaNueva.id = "tablaCuerpo";

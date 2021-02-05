@@ -24,5 +24,28 @@ const datos =
             "precioIngreso" : 100, 
             "precioActual" : 110
         }],
-        
+        "Bonos": [{
+            "especie": "AL30",
+            "unidades": 10,
+            "precioIngreso" : 155,
+            "precioActual" : 169
+        },
+        {
+            "especie": "DICA",
+            "unidades": 10,
+            "precioIngreso" : 550, 
+            "precioActual" : 620
+        }],
+        "ETFs": [{
+            "especie": "QQQ",
+            "unidades": 10,
+            "precioIngreso" : 100,
+            "precioActual" : 240
+        },
+        {
+            "especie": "SPY",
+            "unidades": 10,
+            "precioIngreso" : 100, 
+            "precioActual" : 310
+        }],
     }

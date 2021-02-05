@@ -1,7 +1,21 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:400,700);
 body {
+  --text-color: #283149;
+  --bkg-color:#dbedf3;
+  --text-hover:#dbedf3; }
+
+body.dark-theme {
+  --text-color: #dbedf3;
+  --bkg-color: #283149;
+  --text-hover:#283149; }
+
+body {
+  background-color: var(--bkg-color);
   font-family: 'Ubuntu', sans-serif; }
+
+h1, h2, h3, p, a, span, label, .btn-link, tr {
+  color: var(--text-color); }
 
 ul {
   list-style-type: none;
@@ -12,12 +26,18 @@ a {
   text-decoration: none;
   font-size: 15px; }
 
-h1, h2, p, a, span, label {
-  color: #dbedf3; }
-
 .row {
   transition: opacity 400ms;
   height: 100vh; }
+
+.card {
+  background-color: #da0463; }
+
+.btn-link:hover {
+  color: #283149; }
+
+.btn:focus {
+  box-shadow: none; }
 
 .scnd-font-color {
   color: #dbedf3; }
@@ -28,11 +48,21 @@ h1, h2, p, a, span, label {
   width: 8%;
   z-index: 333333;
   transition: width 400ms; }
+  .side-menu .custom-control-label {
+    text-indent: -20em;
+    white-space: nowrap;
+    transition: text-indent 400ms ease-in-out;
+    z-index: 0; }
+  .side-menu .custom-control {
+    margin-left: 2.6vw;
+    transition: padding 400ms; }
   .side-menu:hover {
     width: 20%; }
     .side-menu:hover ~ .row {
       opacity: 0.15; }
-    .side-menu:hover .nav-menu span {
+    .side-menu:hover .custom-control {
+      padding-left: 20%; }
+    .side-menu:hover .nav-menu span, .side-menu:hover .custom-control-label {
       text-indent: 1em; }
     .side-menu:hover ul {
       padding-left: 4%; }
@@ -77,7 +107,8 @@ h1, h2, p, a, span, label {
 
 .icon {
   font-size: 45px;
-  filter: drop-shadow(0px 0px 2px #283149); }
+  filter: drop-shadow(0px 0px 2px #283149);
+  stroke: var(--text-color); }
 
 /* Menu Circular  */
 .circular-menu {
@@ -265,10 +296,11 @@ h1, h2, p, a, span, label {
   margin: 0; }
 
 tbody tr {
-  line-height: 38px; }
+  line-height: 38px;
+  background-color: #404b69; }
   tbody tr:hover {
-    background: #dbedf3;
-    color: #283149; }
+    background-color: var(--text-color);
+    color: var(--text-hover); }
 
 .lista-tabla-filtro {
   background-color: #e275a6;
@@ -287,26 +319,18 @@ tbody tr {
 
 /* Diseño de tablet Fin*/
 /* Diseño de Escritorio */
+@media (min-width: 1024px) {
+  .side-menu:hover .nav-menu span span:nth-last-of-type(1) {
+    text-indent: 0.4em; } }
+
 /* Diseño de Escritorio Fin*/
-body {
-  --text-color: #283149;
-  --bkg-color:#dbedf3; }
-
-body.dark-theme {
-  --text-color: #dbedf3;
-  --bkg-color: #283149; }
-
 @media (prefers-color-scheme: dark) {
   /* defaults to dark theme */
   body {
     --text-color:#dbedf3;
-    --bkg-color: #283149; }
+    --bkg-color: #283149;
+    --text-hover:#283149; }
   body.light-theme {
     --text-color: #283149;
-    --bkg-color:#dbedf3; } }
-
-body {
-  background-color: var(--bkg-color); }
-
-h1, h2, h3, p, a, span, label {
-  color: var(--text-color); }
+    --bkg-color:#dbedf3;
+    --text-hover:#dbedf3; } }

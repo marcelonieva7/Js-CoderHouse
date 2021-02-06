@@ -33,7 +33,7 @@ RenderChart();
 
 /////////////////////////////////////// ALERTA DE CARTERA VACIA  ///////////////////////////////////////
 
-const alertEmpty = `<h2 class="lista__titular rounded-sm offset-md-1 m-auto emptyAlert" id="advertencia">Su Portafolio esta vacio, ingrese una nueva posicion</h2>`;
+const alertEmpty = `<h2 class="lista__titular rounded-sm col-10 b-shadow offset-md-1 emptyAlert" id="advertencia">Su Portafolio esta vacio, ingrese una nueva posicion</h2>`;
 
 function checkEmptyList() {
     if (actLista.length === 0) {
@@ -226,7 +226,7 @@ function RenderLista() {
             <th class="text-left" scope="row">${i.especie}</th>
             <td>${i.unidades}</td>
             <td>$${monto}</td>
-            <td>${i.porcentajeDeCartera()}</td>
+            <td class="d-none d-md-block">${i.porcentajeDeCartera()}</td>
             <td>${i.variacion()}</td>
             <td><button type="button" id="btn-del${id}" class="btn btn-primary">X</button></td>
         </tr>`);

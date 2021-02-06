@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Portafolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@8.2.3/dist/css/autoComplete.min.css">
-    <link rel="stylesheet" href="./node_modules/chart.js/dist/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.css" integrity="sha512-C7hOmCgGzihKXzyPU/z4nv97W0d9bv4ALuuEbSf6hm93myico9qa0hv4dODThvCsqQUmKmLcJmlpRmCaApr83g==" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css">
     <script defer src="./scripts/data.js"></script>
     <script defer src="./scripts/variables.js"></script>
@@ -72,14 +71,39 @@
               <div class="hamburger hamburger-bar"></div>
               <div class="hamburger hamburger-bar"></div>
             </label>
-              <a class="circular-menu__item" href="#"><i class="fas fa-cog"></i></a>
-              <a class="circular-menu__item" href="#"><i class="fas fa-user"></i></a>
-              <a class="circular-menu__item" href="#"><i class="fas fa-bell"></i></a>
-              <a class="circular-menu__item" href="#"><i class="fas fa-star"></i></a>
+              <a class="circular-menu__item" href="#row1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user scnd-font-color" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <circle cx="12" cy="7" r="4" />
+                  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+                </svg>
+              </a>
+              <a class="circular-menu__item" href="#row2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-plus scnd-font-color" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <circle cx="12" cy="12" r="9" />
+                  <line x1="9" y1="12" x2="15" y2="12" />
+                  <line x1="12" y1="9" x2="12" y2="15" />
+                </svg>
+              </a>
+              <a class="circular-menu__item" href="#row3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-receipt-2 scnd-font-color" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2" />
+                  <path d="M14 8h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5m2 0v1.5m0 -9v1.5" />
+                </svg>
+              </i></a>
+              <a class="circular-menu__item" href="#row4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wallet scnd-font-color" width="100" height="100" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                  <path d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12" />
+                  <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
+                </svg>
+              </i></a>
         </nav>
         <div class="row justify-content-center align-items-center" id="row1">
             <div class="offset-md-1 col-10 col-md-6 col-lg-5" id="row1-col">
-                <section class="donut-chart-block">
+                <section class="donut-chart-block b-shadow">
                     <h2 class="donut-chart-block__titular">Cartera por Tipo de Especie</h2>
                     <div class="donut-chart" id="donut-chart">
                         <div class="wrapper" id="chartWrapper">
@@ -107,7 +131,7 @@
                 </section>
             </div>            
             <div class="offset-md-1 offset-lg-0 col-md-8 col-lg-6" id="row1-col2">
-                <section class="lista">
+                <section class="lista b-shadow overflow-hidden">
                     <h2 class="lista__titular">Detalle por tipo de especie</h2>
                     <table class="lista-tabla table">
                         <thead class="lista-tabla-filtro">
@@ -125,7 +149,7 @@
         </div>
         <div class="row justify-content-center align-items-center" id ="row2">
             <div class="offset-md-1 col-md-6 col-lg-5" id="wrapperForm">
-                <form id="form1" action="#row2">
+                <form id="form1" class="b-shadow" action="#row2">
                   <h2 class="form__titular">Ingresar Nueva Posición</h2>
                     <div class="form-group">
                       <label for="exampleFormControlSelect1">Tipo de Especie</label>
@@ -152,9 +176,9 @@
                 </form>
             </div>
         </div>
-        <div class="row justify-content-center" id="row3">
+        <div class="row justify-content-center align-items-center" id="row3">
             <div class="offset-md-1 col-md-10" id="row3col">
-                <div class="accordion" id="accordionExample">
+                <div class="accordion b-shadow" id="accordionExample">
                     <div class="card border-0">
                       <div class="card-header" id="headingOne">
                         <h2 class="mb-0">
@@ -299,7 +323,7 @@
         </div>
         <div class="row justify-content-center align-items-center" id="row4">
           <div class="offset-md-1 offset-lg-1 col-md-10" id="row4-col">
-              <section class="lista">
+              <section class="lista b-shadow overflow-hidden">
                   <h2 class="lista__titular">Tenencia detallada</h2>
                   <table class="lista-tabla table">
                       <thead id="encabezado" class="lista-tabla-filtro">
@@ -319,13 +343,9 @@
           </div>          
       </div>
     </div>
-    
-    <script src="./node_modules/chart.js/dist/Chart.bundle.js" integrity="sha512-zO8oeHCxetPn1Hd9PdDleg5Tw1bAaP0YmNvPY8CwcRyUk7d7/+nyElmFrB6f7vg4f7Fv4sui1mcep8RIEShczg==" crossorigin="anonymous"></script>
-    <script src="./node_modules/chart.js/dist/Chart.bundle.min.js" integrity="sha512-SuxO9djzjML6b9w9/I07IWnLnQhgyYVSpHZx0JV97kGBfTIsUYlWflyuW4ypnvhBrslz1yJ3R+S14fdCWmSmSA==" crossorigin="anonymous"></script>
-    
-    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
-    <script src="./node_modules/popper.js/dist/popper.min.js"></script>
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@8.2.3/dist/js/autoComplete.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.bundle.min.js" integrity="sha512-SuxO9djzjML6b9w9/I07IWnLnQhgyYVSpHZx0JV97kGBfTIsUYlWflyuW4ypnvhBrslz1yJ3R+S14fdCWmSmSA==" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
 </body>
 </html>

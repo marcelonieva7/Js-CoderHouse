@@ -4,7 +4,7 @@ body {
     --text-color: #283149;
     --bkg-color:#dbedf3;
     --text-hover:#dbedf3;
-    --bkg-color-card: #586791;
+    --bkg-color-card: #a5b5dd;
     --bkg-red: #f1378b;
 }
 body.dark-theme {
@@ -41,12 +41,18 @@ a {
 .card-header {
     border-bottom: 3px solid White;
 }
+.table {
+    margin-bottom: 0;
+}
 .btn-link {
     &:hover {
         color: $miNegro;
     }
 }
-
+.spinner-grow{
+    width: 10rem;
+    height: 10rem;
+}
 .btn:focus {
     box-shadow: none;
 }
@@ -177,7 +183,7 @@ a {
         & ~ {
             .circular-menu__item {
                 transition-timing-function: cubic-bezier(0.935, 0, 0.34, 1.33);
-                @for $i from 1 through 4 {
+                @for $i from 1 through 5 {
                     &:nth-of-type(#{$i}) {
                         transition-duration: 0.08s + 0.10 * $i;
                         transform: translate3d(0px, 100% * $i, 0);
@@ -234,11 +240,14 @@ a {
         }
     }
 }
+.darkModeMobile {
+    left: 50%;
+}
 .circular-menu__item {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #222831;
+    background-color: var(--text-color);
     border-radius: 100%;
     box-shadow: 0 2px 5px rgba(0,0,0,0.25);
     color: #eeeeee;
@@ -256,7 +265,10 @@ a {
     transition-duration: 0.18s;
     &:hover {
         color: #111010;
-        background: #f3efef;
+        background: var(--bkg-red);
+    }
+    svg {
+        stroke: var(--text-hover);
     }
 }
 .circular-menu__item:active,
@@ -288,6 +300,7 @@ a {
 .esp-percentages {
     width: 100%;
     border-radius: 50px 0 50px;
+    display: flex;
     li {
         width: 25%;
         text-align: center;
@@ -404,7 +417,7 @@ tbody {
       --text-color: #283149;
       --bkg-color:#dbedf3;
       --text-hover:#dbedf3;
-      --bkg-color-card: #586791;
+      --bkg-color-card: #a5b5dd;
       --bkg-red: #f1378b;
     }
 }

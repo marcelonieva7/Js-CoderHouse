@@ -4,7 +4,7 @@ body {
   --text-color: #283149;
   --bkg-color:#dbedf3;
   --text-hover:#dbedf3;
-  --bkg-color-card: #586791;
+  --bkg-color-card: #a5b5dd;
   --bkg-red: #f1378b; }
 
 body.dark-theme {
@@ -40,8 +40,15 @@ a {
 .card-header {
   border-bottom: 3px solid White; }
 
+.table {
+  margin-bottom: 0; }
+
 .btn-link:hover {
   color: #283149; }
+
+.spinner-grow {
+  width: 10rem;
+  height: 10rem; }
 
 .btn:focus {
   box-shadow: none; }
@@ -164,6 +171,10 @@ a {
       transition-duration: 0.48s;
       transform: translate3d(0px, 400%, 0);
       opacity: 1; }
+    .circular-menu__button:checked ~ .circular-menu__item:nth-of-type(5) {
+      transition-duration: 0.58s;
+      transform: translate3d(0px, 500%, 0);
+      opacity: 1; }
 
 .circular-menu__icon {
   background: #222831cb;
@@ -206,11 +217,14 @@ a {
   .circular-menu__icon > .hamburger-bar:nth-child(3) {
     transform: translate3d(0, 8px, 0); }
 
+.darkModeMobile {
+  left: 50%; }
+
 .circular-menu__item {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #222831;
+  background-color: var(--text-color);
   border-radius: 100%;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   color: #eeeeee;
@@ -228,7 +242,9 @@ a {
   transition-duration: 0.18s; }
   .circular-menu__item:hover {
     color: #111010;
-    background: #f3efef; }
+    background: var(--bkg-red); }
+  .circular-menu__item svg {
+    stroke: var(--text-hover); }
 
 .circular-menu__item:active,
 .circular-menu__item:focus {
@@ -257,7 +273,8 @@ a {
 
 .esp-percentages {
   width: 100%;
-  border-radius: 50px 0 50px; }
+  border-radius: 50px 0 50px;
+  display: flex; }
   .esp-percentages li {
     width: 25%;
     text-align: center; }
@@ -348,5 +365,5 @@ tbody tr {
     --text-color: #283149;
     --bkg-color:#dbedf3;
     --text-hover:#dbedf3;
-    --bkg-color-card: #586791;
+    --bkg-color-card: #a5b5dd;
     --bkg-red: #f1378b; } }

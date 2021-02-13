@@ -39,3 +39,44 @@ function saveData() {
     }
     localStorage.setItem('cartera', JSON.stringify(datosLocales));
 }
+
+
+function roundTwoDecimals(num) {
+    num = num * 100;
+    num = Math.round(num);
+    num = num / 100;
+    return num;
+}
+
+
+function updateData(data) {
+    for (const s of data.Acciones) {
+        $.ajax({
+        url: `https://finnhub.io/api/v1/quote?symbol=${s.ticker}&token=c0hi55f48v6phn6t4k80`,
+        type: "GET",
+        crossDomain: true,
+        success: function(response) {    
+            s.precioActual = response.c;
+            s.cierreAnterior = response.pc;
+            $(".spinner-grow").hide();
+            RenderChart();
+            RenderEspPorcentajes();
+            renderTypeOf();
+            $("#wrapperForm").show();
+            renderCotizaciones();
+            $("#row3col").show();
+            RenderLista();
+            $('#tablaCuerpo').show();
+        },
+  
+        error: function() {
+            alert("error");
+        }
+  
+        });
+    }
+};
+
+setInterval(() => {updateData(datos)}, 60000);
+
+updateData(datos);

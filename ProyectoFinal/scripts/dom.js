@@ -29,8 +29,6 @@ function RenderChart() {
     });
 }
 
-RenderChart();
-
 /////////////////////////////////////// ALERTA DE CARTERA VACIA  ///////////////////////////////////////
 
 const alertEmpty = `<h2 class="lista__titular rounded-sm col-10 b-shadow offset-md-1 emptyAlert" id="advertencia">Su Portafolio esta vacio, ingrese una nueva posicion</h2>`;
@@ -49,25 +47,26 @@ function checkEmptyList() {
 checkEmptyList();
 
 /////////////////////////////////////// PORCENTAJES POR TIPO DE ESPECIE ///////////////////////////////////////
-
+$(".esp-percentages").hide()
 function RenderEspPorcentajes() {
+    $(".esp-percentages").show();
     Cripto.porcentajeDeEspecie() === 0 ? $("#Cripto\\%").parent().toggleClass("d-none", true) : ($("#Cripto\\%").parent().toggleClass("d-none", false), $("#Cripto\\%").text(`${Cripto.porcentajeDeEspecie()}%`));
     Acciones.porcentajeDeEspecie() === 0 ? $("#Acciones\\%").parent().toggleClass("d-none", true) : ($("#Acciones\\%").parent().toggleClass("d-none", false), $("#Acciones\\%").text(`${Acciones.porcentajeDeEspecie()}%`));
     Bonos.porcentajeDeEspecie() === 0 ? $("#Bonos\\%").parent().toggleClass("d-none", true) : ($("#Bonos\\%").parent().toggleClass("d-none", false), $("#Bonos\\%").text(`${Bonos.porcentajeDeEspecie()}%`));
     Etfs.porcentajeDeEspecie() === 0 ? $("#Etfs\\%").parent().toggleClass("d-none", true) : ($("#Etfs\\%").parent().toggleClass("d-none", false), $("#Etfs\\%").text(`${Etfs.porcentajeDeEspecie()}%`));
 };
 
-RenderEspPorcentajes();
+
 
 /////////////////////////////////////// LISTA RESUMEN POR TIPO DE ESPECIE ///////////////////////////////////////
-
+$(".lista").append($("#spinner").clone());
 function renderTypeOf() {
     if (criptoLista.length !== 0) {
         $(`#typeCriptoRow`).remove();
         $("#typeBody").append(
             `<tr id="typeCriptoRow">
                 <th scope="row" class="text-left">Criptomonedas</th>
-                <td class="text-center">$${montoCripto}</td>
+                <td class="text-center">$${roundTwoDecimals(montoCripto)}</td>
                 <td class="text-center">${Cripto.porcentajeDeEspecie()}%</td>
             </tr>
         `);
@@ -80,7 +79,7 @@ function renderTypeOf() {
         $(`#typeBody`).append(
             `<tr id="typeAccionesRow">
                 <th scope="row" class="text-left">Acciones</th>
-                <td class="text-center">$${montoAcciones}</td>
+                <td class="text-center">$${roundTwoDecimals(montoAcciones)}</td>
                 <td class="text-center">${Acciones.porcentajeDeEspecie()}%</td>
             </tr>
         `);
@@ -93,7 +92,7 @@ function renderTypeOf() {
         $(`#typeBody`).append(
             `<tr id="typeBonosRow">
                 <th scope="row" class="text-left">Bonos</th>
-                <td class="text-center">$${montoBonos}</td>
+                <td class="text-center">$${roundTwoDecimals(montoBonos)}</td>
                 <td class="text-center">${Bonos.porcentajeDeEspecie()}%</td>
             </tr>
         `);
@@ -106,7 +105,7 @@ function renderTypeOf() {
         $(`#typeBody`).append(
             `<tr id="typeEtfsRow">
                 <th scope="row" class="text-left">Etfs</th>
-                <td class="text-center">$${montoEtfs}</td>
+                <td class="text-center">$${roundTwoDecimals(montoEtfs)}</td>
                 <td class="text-center">${Etfs.porcentajeDeEspecie()}%</td>
             </tr>
         `);
@@ -116,18 +115,21 @@ function renderTypeOf() {
     }
 }
 
-renderTypeOf();
 
-/////////////////////////////////////// MODAL NUEVA TENENCIA ///////////////////////////////////////
+
+/////////////////////////////////////// COTIZACIONES ///////////////////////////////////////
+$("#row3").prepend($("#spinner").clone());
+$("#row3col").hide();
 
 function renderModal(data, i, type) {
     let id = 0;
+    $(`#${type}List--Body`).empty();
     for (const j of data[i]) {
         $(`#${type}List--Body`).append(
             `<tr>
                 <th scope="row" class="text-left">${j.especie}</th>
                 <td class="text-center">${j.precioActual}</td>
-                <td class="text-center">${j.precioIngreso}</td>
+                <td class="text-center">${j.cierreAnterior}</td>
                 <td class="text-center"><button type="button" id="btn${id}-${type}" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">...</button></td>
             </tr>
             `);
@@ -142,42 +144,38 @@ function renderModal(data, i, type) {
     }
 }
 
-
-for (const i in datos) {
-    if (i === 'Cripto') {
-        renderModal(datos, i, "cripto");
-    }
-    else if (i === 'Acciones') {
-        renderModal(datos, i, "acciones");
-    }
-    else if (i === 'Bonos') {
-        renderModal(datos, i, "bonos");
-    }
-    else if (i === 'ETFs') {
-        renderModal(datos, i, "ETFs");
+function renderCotizaciones() {
+    for (const i in datos) {
+        if (i === 'Cripto') {
+            renderModal(datos, i, "cripto");
+        }
+        else if (i === 'Acciones') {
+            renderModal(datos, i, "acciones");
+        }
+        else if (i === 'Bonos') {
+            renderModal(datos, i, "bonos");
+        }
+        else if (i === 'ETFs') {
+            renderModal(datos, i, "ETFs");
+        }
     }
 }
 
 /////////////////////////////////////// VALIDADORES ///////////////////////////////////////
 
-function Validador1() {
-    if ($('#newUnidades1').val() != '') {
-    Render(1);
-    $('#exampleModal').modal('hide')    
-    }
-};
+$("#form2").on("submit", function(event) {
+    event.preventDefault();
+    $('#newUnidades1').val() != '' ? (Render(1), $('#exampleModal').modal('hide')) : undefined ; 
+});
 
-$("#form__btn1").on("click", Validador1);
-
-function Validador() {
-    if ($(`#newEspecie0`).val() && $(`#newUnidades0`).val() && $(`#newPrecio0`).val() != '') {
-        Render(0);
-    }
-};
-
-$("#form__btn0").on("click", Validador);
+$("#form1").on("submit", function(event) {
+    event.preventDefault();
+    $(`#newEspecie0`).val() && $(`#newUnidades0`).val() && $(`#newPrecio0`).val() != '' ? Render(0) : undefined;
+});
 
 /////////////////////////////////////// AGREGAR TENENCIA ///////////////////////////////////////
+$("#row2").prepend($("#spinner").clone());
+$("#wrapperForm").hide();
 
 function Render(n) {
     let seleccionado = $(`#ingresarOpciones${n}`).prop(`selectedIndex`);
@@ -215,18 +213,19 @@ function Render(n) {
 }
 
 /////////////////////////////////////// LISTA TENENCIAS ///////////////////////////////////////
+$('#tablaCuerpo').hide();
 
 function RenderLista() {
     $('#tablaCuerpo').empty();
     let id = 0;
         for (const i of actLista) {
-            monto = i.unidades * i.precioActual;
+            monto = roundTwoDecimals(i.unidades * i.precioActual);
         $("#tablaCuerpo").append(
         `<tr>
             <th class="text-left" scope="row">${i.especie}</th>
             <td>${i.unidades}</td>
             <td>$${monto}</td>
-            <td class="d-none d-md-block">${i.porcentajeDeCartera()}</td>
+            <td class="d-none d-md-table-cell">${i.porcentajeDeCartera()}</td>
             <td>${i.variacion()}</td>
             <td><button type="button" id="btn-del${id}" class="btn btn-primary">X</button></td>
         </tr>`);
@@ -243,8 +242,6 @@ function RenderLista() {
         id += 1;
     }
 }
-
-RenderLista();
 
 /////////////////////////////////////THEME/////////////////////////////////////
 const btn = $(".custom-control-input");
@@ -273,3 +270,17 @@ btn.on("click", function () {
     }
     localStorage.setItem("theme", theme);
 });
+
+/////////////////////////////////////////ANIMACIONES MENU/////////////////////////////////////////
+function animateScroll(menuItem, toRow) {
+    $(`#${menuItem}`).on("click", function() {
+        $('html, body').animate({
+        scrollTop: $(`#${toRow}`).offset().top
+        }, 1250);
+    });
+}
+
+animateScroll("menu1", "row1");
+animateScroll("menu2", "row2");
+animateScroll("menu3", "row3");
+animateScroll("menu4", "row4");

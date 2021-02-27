@@ -1,7 +1,7 @@
 ///////////////////////////////////////////COMPONENTS///////////////////////////////////////////
 const ComponentHome = {
     render: function() {
-       return `<div class="row justify-content-center align-items-center" id="row1">
+        return `<div class="row justify-content-center align-items-center" id="row1">
                 <div class="offset-md-1 col-10 col-md-6 col-lg-5" id="row1-col">
                     <section class="donut-chart-block b-shadow">
                         <h2 class="donut-chart-block__titular">Cartera por Tipo de Especie</h2>
@@ -49,8 +49,7 @@ const ComponentHome = {
                         </table>
                     </section>
                 </div>          
-            </div>`;
-        
+            </div>`;        
     },
     renderJS: function() {
         $(".esp-percentages").hide()
@@ -59,7 +58,7 @@ const ComponentHome = {
         renderTypeOf();
         checkEmptyList();
     }
- }
+}
 
 const componentPage1 = {
     render: function() {
@@ -91,7 +90,7 @@ const componentPage1 = {
                             <button type="submit" class="btn btn-danger" id="form__btn0">Ingresar</button>
                         </form>
                     </div>
-               </div>`
+                </div>`
     },
     renderJS: function() {
         $("#form1").on("submit", function(event) {
@@ -296,7 +295,7 @@ const componentError = {
                     </div>          
                 </div>`;
     }
- }
+}
 
 const routes = [
     {

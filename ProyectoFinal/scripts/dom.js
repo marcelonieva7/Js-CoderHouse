@@ -56,8 +56,6 @@ function RenderEspPorcentajes() {
     Etfs.porcentajeDeEspecie() === 0 ? $("#Etfs\\%").parent().toggleClass("d-none", true) : ($("#Etfs\\%").parent().toggleClass("d-none", false), $("#Etfs\\%").text(`${Etfs.porcentajeDeEspecie()}%`));
 };
 
-
-
 /////////////////////////////////////// LISTA RESUMEN POR TIPO DE ESPECIE ///////////////////////////////////////
 
 function renderTypeOf() {
@@ -115,11 +113,7 @@ function renderTypeOf() {
     }
 }
 
-
-
 /////////////////////////////////////// COTIZACIONES ///////////////////////////////////////
-
-$("#row3col").hide();
 
 function renderModal(data, i, type) {
     let id = 0;
@@ -195,7 +189,6 @@ function Render(n) {
 }
 
 /////////////////////////////////////// LISTA TENENCIAS ///////////////////////////////////////
-$('#tablaCuerpo').hide();
 
 function RenderLista() {
     $('#tablaCuerpo').empty();

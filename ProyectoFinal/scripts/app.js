@@ -52,7 +52,6 @@ const ComponentHome = {
             </div>`;        
     },
     renderJS: function() {
-        $(".esp-percentages").hide()
         RenderChart();
         RenderEspPorcentajes();
         renderTypeOf();

@@ -37,14 +37,13 @@ function checkEmptyList() {
     if (actLista.length === 0) {
         $('#row1-col').toggleClass("d-none", true);
         $('#row1-col2').toggleClass("d-none", true);
-        $('#row4-col').toggleClass("d-none", true);
+        $('#row4-col').hide()
     
         $('#row1').append(alertEmpty);
         $('#row4').append(alertEmpty);
+        $('.emptyAlert').hide().fadeIn(1700);        
     }
 }
-
-;
 
 /////////////////////////////////////// PORCENTAJES POR TIPO DE ESPECIE ///////////////////////////////////////
 
@@ -196,7 +195,7 @@ function RenderLista() {
         for (const i of actLista) {
             monto = roundTwoDecimals(i.unidades * i.precioActual);
         $("#tablaCuerpo").append(
-        `<tr>
+        `<tr id="tr-del${id}">
             <th class="text-left" scope="row">${i.especie}</th>
             <td>${i.unidades}</td>
             <td>$${monto}</td>
@@ -205,9 +204,12 @@ function RenderLista() {
             <td><button type="button" id="btn-del${id}" class="btn btn-primary">X</button></td>
         </tr>`);
         
+        let trId = $(`#tr-del${id}`);
+
         $(`#btn-del${id}`).on("click", function() {
+            trId.fadeOut("slow");
             i.borrar();
-            RenderLista();
+            //RenderLista();
             checkEmptyList()
             saveData()
         });

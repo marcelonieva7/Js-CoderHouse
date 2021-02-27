@@ -48,7 +48,7 @@ function roundTwoDecimals(num) {
     return num;
 }
 
-
+///////////////////////////////////////////AJAX///////////////////////////////////////////
 function updateData(data, callback) {
     for (const a in data) {
         for (const s of data[a]) {

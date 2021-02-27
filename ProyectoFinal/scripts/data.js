@@ -2,15 +2,11 @@ let datos =
     {
         "Cripto": [{
             "especie": "Bitcoin",
-            "ticker": 10,
-            "cierreAnterior" : 100,
-            "precioActual" : 130
+            "ticker": "BINANCE:BTCUSDT"
         },
         {
             "especie": "Ethereum",
-            "ticker": 11,
-            "cierreAnterior" : 100, 
-            "precioActual" : 80
+            "ticker": "BINANCE:ETHUSDT"
         }],
         "Acciones": [{
             "especie": "Apple",
@@ -22,26 +18,18 @@ let datos =
         }],
         "Bonos": [{
             "especie": "AL30",
-            "ticker": 10,
-            "cierreAnterior" : 155,
-            "precioActual" : 169
+            "ticker": "OANDA:EUR_USD"
         },
         {
             "especie": "DICA",
-            "ticker": 10,
-            "cierreAnterior" : 550, 
-            "precioActual" : 620
+            "ticker": "OANDA:GBP_USD"
         }],
         "ETFs": [{
             "especie": "QQQ",
-            "ticker": 10,
-            "cierreAnterior" : 100,
-            "precioActual" : 240
+            "ticker": "QQQ"
         },
         {
             "especie": "SPY",
-            "ticker": 10,
-            "cierreAnterior" : 100, 
-            "precioActual" : 310
+            "ticker": "SPY"
         }],
     }

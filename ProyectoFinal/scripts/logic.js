@@ -49,34 +49,33 @@ function roundTwoDecimals(num) {
 }
 
 
-function updateData(data) {
-    for (const s of data.Acciones) {
-        $.ajax({
-        url: `https://finnhub.io/api/v1/quote?symbol=${s.ticker}&token=c0hi55f48v6phn6t4k80`,
-        type: "GET",
-        crossDomain: true,
-        success: function(response) {    
-            s.precioActual = response.c;
-            s.cierreAnterior = response.pc;
-            $(".spinner-grow").hide();
-            RenderChart();
-            RenderEspPorcentajes();
-            renderTypeOf();
-            $("#wrapperForm").show();
-            renderCotizaciones();
-            $("#row3col").show();
-            RenderLista();
-            $('#tablaCuerpo').show();
-        },
-  
-        error: function() {
-            alert("error");
+function updateData(data, callback) {
+    for (const a in data) {
+        for (const s of data[a]) {
+            $.ajax({
+            url: `https://finnhub.io/api/v1/quote?symbol=${s.ticker}&token=c0hi55f48v6phn6t4k80`,
+            type: "GET",
+            crossDomain: true,
+            success: function(response) {
+                // console.log("success")    
+                s.precioActual = response.c;
+                s.cierreAnterior = response.pc;
+
+                
+                callback;
+
+                $(".spinner-grow").hide();
+            },
+      
+            error: function() {
+                console.log("error");
+            }
+      
+            });
         }
-  
-        });
     }
 };
 
-setInterval(() => {updateData(datos)}, 60000);
+// setInterval(() => {updateData(datos)}, 60000);
 
-updateData(datos);
+// setTimeout(updateData(datos),510)

@@ -44,10 +44,10 @@ function checkEmptyList() {
     }
 }
 
-checkEmptyList();
+;
 
 /////////////////////////////////////// PORCENTAJES POR TIPO DE ESPECIE ///////////////////////////////////////
-$(".esp-percentages").hide()
+
 function RenderEspPorcentajes() {
     $(".esp-percentages").show();
     Cripto.porcentajeDeEspecie() === 0 ? $("#Cripto\\%").parent().toggleClass("d-none", true) : ($("#Cripto\\%").parent().toggleClass("d-none", false), $("#Cripto\\%").text(`${Cripto.porcentajeDeEspecie()}%`));
@@ -59,7 +59,7 @@ function RenderEspPorcentajes() {
 
 
 /////////////////////////////////////// LISTA RESUMEN POR TIPO DE ESPECIE ///////////////////////////////////////
-$(".lista").append($("#spinner").clone());
+
 function renderTypeOf() {
     if (criptoLista.length !== 0) {
         $(`#typeCriptoRow`).remove();
@@ -118,7 +118,7 @@ function renderTypeOf() {
 
 
 /////////////////////////////////////// COTIZACIONES ///////////////////////////////////////
-$("#row3").prepend($("#spinner").clone());
+
 $("#row3col").hide();
 
 function renderModal(data, i, type) {
@@ -161,21 +161,7 @@ function renderCotizaciones() {
     }
 }
 
-/////////////////////////////////////// VALIDADORES ///////////////////////////////////////
-
-$("#form2").on("submit", function(event) {
-    event.preventDefault();
-    $('#newUnidades1').val() != '' ? (Render(1), $('#exampleModal').modal('hide')) : undefined ; 
-});
-
-$("#form1").on("submit", function(event) {
-    event.preventDefault();
-    $(`#newEspecie0`).val() && $(`#newUnidades0`).val() && $(`#newPrecio0`).val() != '' ? Render(0) : undefined;
-});
-
 /////////////////////////////////////// AGREGAR TENENCIA ///////////////////////////////////////
-$("#row2").prepend($("#spinner").clone());
-$("#wrapperForm").hide();
 
 function Render(n) {
     let seleccionado = $(`#ingresarOpciones${n}`).prop(`selectedIndex`);
@@ -205,11 +191,7 @@ function Render(n) {
         new Etfs(es, un, pn, pa); 
     }
 
-    saveData();    
-    renderTypeOf();
-    RenderLista();
-    RenderChart(); 
-    RenderEspPorcentajes();    
+    saveData();   
 }
 
 /////////////////////////////////////// LISTA TENENCIAS ///////////////////////////////////////
@@ -232,10 +214,7 @@ function RenderLista() {
         
         $(`#btn-del${id}`).on("click", function() {
             i.borrar();
-            RenderLista()
-            RenderEspPorcentajes()
-            RenderChart()
-            renderTypeOf()
+            RenderLista();
             checkEmptyList()
             saveData()
         });
@@ -270,17 +249,3 @@ btn.on("click", function () {
     }
     localStorage.setItem("theme", theme);
 });
-
-/////////////////////////////////////////ANIMACIONES MENU/////////////////////////////////////////
-function animateScroll(menuItem, toRow) {
-    $(`#${menuItem}`).on("click", function() {
-        $('html, body').animate({
-        scrollTop: $(`#${toRow}`).offset().top
-        }, 1250);
-    });
-}
-
-animateScroll("menu1", "row1");
-animateScroll("menu2", "row2");
-animateScroll("menu3", "row3");
-animateScroll("menu4", "row4");
